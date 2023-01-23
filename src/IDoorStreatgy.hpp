@@ -16,7 +16,6 @@ namespace smartdoor
     {
 
     public:
-        IDoorStreatgy();
         virtual ~IDoorStreatgy() = default;
         virtual void execute() = 0;
 

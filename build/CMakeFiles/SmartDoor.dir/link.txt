@@ -1,1 +1,1 @@
-/usr/bin/c++     CMakeFiles/SmartDoor.dir/main.cpp.o  -o SmartDoor 
+/usr/bin/arm-linux-gnueabihf-g++ CMakeFiles/SmartDoor.dir/main.cpp.o CMakeFiles/SmartDoor.dir/src/FacadeResourceManager.cpp.o CMakeFiles/SmartDoor.dir/src/Servo.cpp.o CMakeFiles/SmartDoor.dir/src/TempertureStreatgy.cpp.o CMakeFiles/SmartDoor.dir/src/TempSensor.cpp.o -o SmartDoor 
