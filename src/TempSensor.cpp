@@ -19,7 +19,7 @@ namespace smartdoor
         m_TempDeviceFile.open(TempDevice, std::ios::in);
         if (m_TempDeviceFile.good())
         {
-            std::cout << "the file is opened successfully " << std::endl;
+            std::cout << "the Temp file is opened successfully " << std::endl;
         }
         else
         {
@@ -39,7 +39,7 @@ namespace smartdoor
     {
         std::string value;
         std::getline(m_TempDeviceFile, value);
-  	    std::regex regex("[\\d]+");
+        std::regex regex("[\\d]+");
         std::smatch m;
         std::regex_search(value, m, regex);
         // for (auto &i : m)
