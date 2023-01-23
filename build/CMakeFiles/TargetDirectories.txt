@@ -1,0 +1,3 @@
+/home/moatasem/c++/smartDoor/build/CMakeFiles/rebuild_cache.dir
+/home/moatasem/c++/smartDoor/build/CMakeFiles/edit_cache.dir
+/home/moatasem/c++/smartDoor/build/CMakeFiles/SmartDoor.dir
