@@ -5,6 +5,8 @@ int main()
 {
     std::cout << "the application is started" << std::endl;
     smartdoor::TempSensor obj;
-    obj.getTemp();
+    
+    std::cout << "the temp value is " << obj.getTemp() << std::endl;
+
     return 0;
 }

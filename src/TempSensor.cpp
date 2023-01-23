@@ -11,6 +11,7 @@ brief:
 */
 #include "TempSensor.hpp"
 #include <iostream>
+#include <regex>
 namespace smartdoor
 {
     TempSensor::TempSensor()
@@ -37,8 +38,16 @@ namespace smartdoor
     int TempSensor::getTemp()
     {
         std::string value;
-        m_TempDeviceFile >> value;
+        std::getline(m_TempDeviceFile, value);
+  	    std::regex regex("[\\d]+");
+        std::smatch m;
+        std::regex_search(value, m, regex);
+        // for (auto &i : m)
+        // {
+        //     std::cout << i << std::endl;
+        // }
+        int valueinInt = std::atoi(m[0].str().c_str());
         std::cout << "the temp value is " << value << std::endl;
-        return 0;
+        return valueinInt;
     }
 }
