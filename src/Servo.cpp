@@ -24,24 +24,42 @@ namespace smartdoor
         {
             std::cout << "[Error] cannot open the Servo file   " << std::endl;
         }
-    }
-    Servo::~Servo()
-    {
         if (m_ServoDeviceFile.is_open())
         {
             m_ServoDeviceFile.close();
         }
     }
+    Servo::~Servo()
+    {
+    }
     void Servo::open()
     {
+        controlfile([this]()
+                    {
         m_ServoDeviceFile << "open";
         m_ServoDeviceFile.flush();
-        std::cout << "Servo is open right now " << std::endl;
+        std::cout << "Servo is open right now " << std::endl; });
     }
     void Servo::close()
     {
-        m_ServoDeviceFile << "close" << std::endl;
+        controlfile([this]()
+                    {
+                                m_ServoDeviceFile << "close" << std::endl;
         m_ServoDeviceFile.flush();
-        std::cout << "Servo is open right now " << std::endl;
+        std::cout << "Servo is close right now " << std::endl; });
+    }
+
+    void Servo::controlfile(std::function<void()> fp)
+    {
+        m_ServoDeviceFile.open(ServoDevice, std::ios::out);
+        if (m_ServoDeviceFile.good())
+        {
+            // calling callback
+            fp();
+        }
+        if (m_ServoDeviceFile.is_open())
+        {
+            m_ServoDeviceFile.close();
+        }
     }
 }

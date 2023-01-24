@@ -1,9 +1,9 @@
 
 #pragma once
 /********************************************/
-//                                          
-//              CopyRight MoatasemElsayed                 
-//                                          
+//
+//              CopyRight MoatasemElsayed
+//
 /********************************************/
 /*
 author : MoatasemElsayed
@@ -13,17 +13,21 @@ brief:
 #include <fstream>
 #include <iostream>
 #include <string>
-namespace smartdoor {
-constexpr char ServoDevice[]="/dev/Servo_driver";
-class Servo{
+#include <functional>
+namespace smartdoor
+{
+    constexpr char ServoDevice[] = "/dev/Servo_driver";
+    class Servo
+    {
 
-public:
-    Servo();
-    ~Servo();
-     void open();
-     void close();
-private:
-    std::fstream m_ServoDeviceFile;
-};
+    public:
+        Servo();
+        ~Servo();
+        void open();
+        void close();
+
+    private:
+        void controlfile(std::function<void()> fp);
+        std::fstream m_ServoDeviceFile;
+    };
 }
-

@@ -22,6 +22,8 @@ namespace smartdoor
         int getTemp();
 
     private:
+        void openfile();
+        void closefile();
         std::fstream m_TempDeviceFile;
     };
 }

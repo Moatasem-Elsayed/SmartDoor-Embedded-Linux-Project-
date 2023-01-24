@@ -25,18 +25,29 @@ namespace smartdoor
         {
             std::cout << "[Error] cannot open the file   " << std::endl;
         }
-    }
-
-    TempSensor::~TempSensor()
-    {
         if (m_TempDeviceFile.is_open())
         {
             m_TempDeviceFile.close();
         }
     }
 
+    TempSensor::~TempSensor()
+    {
+    }
+    void TempSensor::openfile()
+    {
+        m_TempDeviceFile.open(TempDevice, std::ios::in);
+    }
+    void TempSensor::closefile()
+    {
+        if (m_TempDeviceFile.is_open())
+        {
+            m_TempDeviceFile.close();
+        }
+    }
     int TempSensor::getTemp()
     {
+        openfile();
         std::string value;
         std::getline(m_TempDeviceFile, value);
         std::regex regex("[\\d]+");
@@ -48,6 +59,7 @@ namespace smartdoor
         // }
         int valueinInt = std::atoi(m[0].str().c_str());
         std::cout << "the temp value is " << value << std::endl;
+        closefile();
         return valueinInt;
     }
 }
